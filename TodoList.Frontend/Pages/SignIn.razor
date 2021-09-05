@@ -1,0 +1,23 @@
+﻿@page "/login"
+@inherits SignInBase
+<h1>Login </h1>
+
+
+<form @onsubmit="@(()=>OnSubmitClick())">
+    <div class="form-group">
+        <label for="user name">User Name </label>
+        <input type="text" class="form-control" />
+    </div>
+    
+    
+
+   <div class="form-group">
+        <label for="password">Password </label>
+        <input type="password" class="form-control" />
+    </div>
+    
+    
+    
+    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="button" class="btn btn-primary" @onclick="@(()=>navManager.NavigateTo("/SignUp"))">Sign Up</button>
+</form>

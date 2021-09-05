@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todo-backend", "todo-backend\todo-backend.csproj", "{5A3E5186-5E83-4689-810E-08427FCDB773}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "todo-backend", "todo-backend\todo-backend.csproj", "{5A3E5186-5E83-4689-810E-08427FCDB773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Frontend", "TodoList.Frontend\TodoList.Frontend.csproj", "{88C0E0BF-2DC3-4D58-BA9E-72865224ECED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5A3E5186-5E83-4689-810E-08427FCDB773}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A3E5186-5E83-4689-810E-08427FCDB773}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A3E5186-5E83-4689-810E-08427FCDB773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C0E0BF-2DC3-4D58-BA9E-72865224ECED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C0E0BF-2DC3-4D58-BA9E-72865224ECED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C0E0BF-2DC3-4D58-BA9E-72865224ECED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C0E0BF-2DC3-4D58-BA9E-72865224ECED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

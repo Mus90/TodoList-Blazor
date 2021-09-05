@@ -1,0 +1,28 @@
+﻿@page "/SignUp"
+@inherits SignUpBase
+<h1>Login </h1>
+
+
+<form>
+    <div class="form-group">
+        <label for="user name">User Name </label>
+        <input type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Email1">User Name </label>
+        <input type="email" class="form-control" />
+
+    </div> <div class="form-group">
+        <label for="password">Password </label>
+        <input type="password" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Confirm Password </label>
+        <input type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-primary" @onclick="@(()=>navManager.NavigateTo("/"))">Go Back</button>
+</form>

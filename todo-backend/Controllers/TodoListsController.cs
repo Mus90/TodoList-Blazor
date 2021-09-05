@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace todo_backend.Controllers
         [HttpGet]
         public IActionResult GetTodoList()
         {
+
             var result = _context.TodoLists.ToList();
             return Ok(result);
         }
