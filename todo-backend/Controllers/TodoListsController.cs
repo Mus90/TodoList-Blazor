@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,12 +8,13 @@ using todo_backend.Models;
 
 namespace todo_backend.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[Controller]")]
 
     public class TodoListController : ControllerBase
     {
-
+        
         //Calling database Context
         private readonly MyDbContext _context;
         public TodoListController (MyDbContext context)
