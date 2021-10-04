@@ -47,7 +47,7 @@ namespace todo_backend.Controllers
                 {
                     //Generate Token
                     var tokenString = GenerateJSONWebToken(newUser);
-                   return Ok(new { token = tokenString });
+                   return Ok(new SignInResponse { token = tokenString });
                 }
             }
             //otherwise
@@ -64,7 +64,7 @@ namespace todo_backend.Controllers
             if (user != null)
             {
                 var tokenString = GenerateJSONWebToken(user);
-                response = Ok(new { token = tokenString });
+                response = Ok(new SignInResponse { token = tokenString });
             }
 
             return response;

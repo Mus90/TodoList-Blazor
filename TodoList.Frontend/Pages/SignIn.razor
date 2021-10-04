@@ -1,19 +1,19 @@
-﻿@page "/login"
+﻿@page "/"
 @inherits SignInBase
 <h1>Login </h1>
 
 
-<form @onsubmit="@(()=>OnSubmitClick())">
+<form @onsubmit="@(()=>OnSubmitClick())" class="col-lg-6">
     <div class="form-group">
-        <label for="user name">User Name </label>
-        <input type="text" class="form-control" />
+        <label >User Name </label>
+        <input type="text" @bind="@request.UserName" class="form-control" />
     </div>
     
     
 
    <div class="form-group">
         <label for="password">Password </label>
-        <input type="password" class="form-control" />
+        <input type="password" @bind="@request.Password" class="form-control" />
     </div>
     
     

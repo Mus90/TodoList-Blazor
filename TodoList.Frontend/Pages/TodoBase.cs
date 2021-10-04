@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.Threading.Tasks;
+using todo_backend.Models.RequestsDtos;
+using TodoList.Frontend.Clients;
 
 namespace TodoList.Frontend.Pages
 {
@@ -6,9 +9,12 @@ namespace TodoList.Frontend.Pages
     {
         [Inject]
         public NavigationManager navManager { get; set; }
-        protected void OnSubmitClick()
+        [Inject]
+        public Client client { get; set; }
+        public CreateTodoListRequest todoItem = new CreateTodoListRequest();
+        protected async Task OnSubmitClick()
         {
-            //authenticate user
+            await client.CreateList(todoItem);
             // redirect user to Todolist page
             navManager.NavigateTo("/");
         }

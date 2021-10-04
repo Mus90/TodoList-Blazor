@@ -4,8 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using todo_backend.Commands.TodosQueries;
 using todo_backend.Data;
 using todo_backend.Models;
+using todo_backend.Models.RequestsDtos;
+using todo_backend.Queries.TodosQueries;
 
 namespace todo_backend.Controllers
 {
@@ -17,55 +20,45 @@ namespace todo_backend.Controllers
     {
         
         //Calling database Context
-        private readonly MyDbContext _context;
-        public TodoListController (MyDbContext context)
+        private readonly TodoQueriesHandler _queries;
+        private readonly TodoCommandsHandler _commands;
+        public TodoListController(TodoQueriesHandler queries, TodoCommandsHandler commands)
         {
-            _context = context;
+            _queries = queries;
+            _commands = commands;
         }
         // GET: api/TodoLists
         [HttpGet]
         public IActionResult GetTodoList()
         {
-
-            var result = _context.TodoLists.ToList();
+            var result = _queries.GetTodoList();
             return Ok(result);
         }
 
         // GET : api/TodoList/id
-        [HttpGet("{id}")]
-        public IActionResult GetTodoByID (int id)
+        [HttpGet("GetTodoByID")]
+        public IActionResult GetTodoByID (GetTodoListRequest input)
         {
-            var result = _context.TodoLists.Where(x => x.ID == id);
+            var result = _queries.GetTodoListByID(input);
             return Ok(result);
         }
 
         // PUT : api/TodoList/id
         [HttpPut("{id}")]
-        public IActionResult EditTodoList (TodoList todo)
+        public IActionResult UpdateTodoList (UpdateTodoListRequest input)
         {
-            _context.TodoLists.Add(todo);
-            _context.SaveChanges();
+            _commands.UpdateTodoList(input);
             return Ok("Successful");
         }
 
         //POST : api/TodoList
         [HttpPost]
-        public IActionResult PostTodoList (TodoList todo)
+        public async Task<IActionResult> PostTodoList (CreateTodoListRequest input)
         {
-            _context.TodoLists.Add(todo);
-            _context.SaveChanges();
+           await _commands.CreateTodoList(input);
             return Ok("Successful");
         }
 
-        //Delete : api/TodoList/id
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoList (int id)
-        {
-            var todo = await _context.TodoLists.FindAsync(id);
-            _context.TodoLists.Remove(todo);
-            _context.SaveChanges();
-            return Ok("sSuccessful");
-        }
     }
 
 }

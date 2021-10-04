@@ -9,7 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoList.Frontend.Data;
+using TodoList.Frontend.Clients;
+using TodoList.Frontend.Services;
 
 namespace TodoList.Frontend
 {
@@ -28,7 +29,8 @@ namespace TodoList.Frontend
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            services.AddTransient<Client>();
+            services.AddTransient<ILocalStorageService, LocalStorageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 
 namespace todo_backend.Models
 {
@@ -10,6 +7,6 @@ namespace todo_backend.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public bool IsDone { get; set; }
-       
+        public int TodoListId { get; set; }
     }
 }

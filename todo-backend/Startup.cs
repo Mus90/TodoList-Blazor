@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,7 +17,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using todo_backend.Commands;
+using todo_backend.Commands.TodosQueries;
 using todo_backend.Data;
+using todo_backend.Models;
+using todo_backend.Queries.TodosQueries;
 
 namespace todo_backend
 {
@@ -66,7 +71,9 @@ namespace todo_backend
     }
   });
             });
-
+            services.AddTransient<ItemCommandsHandler>();
+            services.AddTransient<TodoCommandsHandler>();
+            services.AddTransient<TodoQueriesHandler>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            .AddJwtBearer(options =>
@@ -83,7 +90,14 @@ namespace todo_backend
                };
            });
 
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
 
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,7 +112,6 @@ namespace todo_backend
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

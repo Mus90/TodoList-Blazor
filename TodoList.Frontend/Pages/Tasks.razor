@@ -1,15 +1,13 @@
-﻿@page "/Task"
+﻿@page "/Task/Create"
 @inherits TasksBase
 
-<h1>Login </h1>
+<form @onsubmit="@(()=>OnSubmitClick())" class="list-group-item mt-1 row">
+    <li class="row">
+        <label class="col-2" for="Todo">Task </label>
+        <input type="text" @bind="@item.Name" class="form-control col-6" />
+        <button type="submit" class="btn btn-primary col-3 ml-1">Create</button>
+    </li>
 
-<form>
-    <div class="form-group">
-        <label for="task">Task  </label>
-        <input type="text" class="form-control" />
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="IsDone">Is done</label>
-
-    </div>
+        
 
 </form>

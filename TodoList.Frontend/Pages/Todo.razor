@@ -2,17 +2,17 @@
 @inherits TodoBase
 <h3>Create List </h3>
 
-<form @onsubmit="@(()=>OnSubmitClick())">
+<form @onsubmit="@(()=>OnSubmitClick())" class="col-lg-6">
     <div class="form-group">
         <label for="Todo">Todo Name </label>
-        <input type="text" class="form-control" />
+        <input type="text" @bind="todoItem.Name" class="form-control" />
     </div>
 
 
 
     <div class="form-group">
         <label for="description">Description </label>
-        <input type="text" class="form-control" />
+        <input type="text" @bind="todoItem.Description" class="form-control" />
     </div>
 
 
