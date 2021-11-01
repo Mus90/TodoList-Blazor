@@ -19,7 +19,7 @@ namespace TodoList.Frontend.Clients
 
         public Client(ILocalStorageService storage)
         {
-            client = new FluentClient("https://localhost:44325/api");
+            client = new FluentClient("https://localhost:5021/api");
             this.storage = storage;
         }
 

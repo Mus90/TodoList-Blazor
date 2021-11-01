@@ -10,8 +10,8 @@ using todo_backend.Data;
 namespace todo_backend.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20210904142244_Renaming Identity Tables")]
-    partial class RenamingIdentityTables
+    [Migration("20211101102221_Add init migration")]
+    partial class Addinitmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -230,12 +230,12 @@ namespace todo_backend.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TodoListID")
+                    b.Property<int>("TodoListId")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("TodoListID");
+                    b.HasIndex("TodoListId");
 
                     b.ToTable("Items");
                 });
@@ -313,7 +313,9 @@ namespace todo_backend.Migrations
                 {
                     b.HasOne("todo_backend.Models.TodoList", null)
                         .WithMany("Tasks")
-                        .HasForeignKey("TodoListID");
+                        .HasForeignKey("TodoListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("todo_backend.Models.TodoList", b =>

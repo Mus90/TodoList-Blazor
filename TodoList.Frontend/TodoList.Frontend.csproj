@@ -4,4 +4,15 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\todo-backend\todo-backend.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Pathoschild.Http.FluentClient" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Pathoschild.Http.FluentClient" Version="4.1.0" />
+  </ItemGroup>
 </Project>
